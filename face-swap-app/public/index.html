@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Face Swap Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="bg-orb orb-a"></div>
+  <div class="bg-orb orb-b"></div>
+
+  <main class="shell">
+    <header class="topbar glass">
+      <div class="brand">
+        <span class="logo-dot"></span>
+        <span>FaceSwap Studio</span>
+      </div>
+      <nav class="nav-pill">
+        <a href="#">Home</a>
+        <a href="#">Generator</a>
+        <a href="#">Pricing</a>
+        <a href="#">Docs</a>
+      </nav>
+      <button class="ghost-btn" type="button">Create Account</button>
+    </header>
+
+    <section class="hero glass">
+      <p class="eyebrow">AI THUMBNAIL EDITING</p>
+      <h1>One-click cinematic <span>Face Swap</span></h1>
+      <p class="subcopy">Upload your target thumbnail and portrait, then generate a seamless blend with realistic lighting and skin tone matching.</p>
+
+      <form id="swapForm" class="panel" novalidate>
+        <div class="upload-grid">
+          <div class="upload-box" data-input="thumbnailInput">
+            <div class="label-row"><h2>Thumbnail</h2><span>Target</span></div>
+            <input type="file" id="thumbnailInput" name="thumbnail" accept="image/jpeg,image/png" required />
+            <p class="hint">Drop image or click · JPG/PNG · max 8MB</p>
+            <img id="thumbnailPreview" class="preview hidden" alt="Thumbnail preview" />
+          </div>
+
+          <div class="upload-box" data-input="portraitInput">
+            <div class="label-row"><h2>Portrait Head</h2><span>Source</span></div>
+            <input type="file" id="portraitInput" name="portrait" accept="image/jpeg,image/png" required />
+            <p class="hint">Drop image or click · JPG/PNG · max 8MB</p>
+            <img id="portraitPreview" class="preview hidden" alt="Portrait preview" />
+          </div>
+        </div>
+
+        <label for="instructions">Extra Style Instructions</label>
+        <input id="instructions" name="instructions" type="text" placeholder="Make it cinematic with dramatic rim lighting" maxlength="300" />
+
+        <div class="cta-row">
+          <button id="generateBtn" type="submit">Generate Face Swap</button>
+          <a id="downloadBtn" class="download hidden" download="swapped-thumbnail.png">Download</a>
+        </div>
+
+        <div id="loading" class="loading hidden">
+          <div class="spinner"></div>
+          <span>Processing with Gemini...</span>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </form>
+
+      <section class="output-panel">
+        <h3>Output Preview</h3>
+        <img id="outputImage" class="result hidden" alt="Generated swapped image" />
+      </section>
+    </section>
+  </main>
+
+  <script src="/script.js" defer></script>
+</body>
+</html>
