@@ -57,7 +57,7 @@ async function callGeminiSwap({ thumbnailPath, thumbnailType, portraitPath, port
     throw new Error('Missing GEMINI_API_KEY in .env.');
   }
 
-  const prompt = `Replace the face in the first image with the face from the second image. Ensure realistic blending, correct lighting, natural skin tones, perspective alignment, and seamless integration. Keep the original thumbnail composition and background intact. Output only one final high-quality edited image. Style: ${styleInstructions || 'YouTube thumbnail style with natural realism'}.`;
+  const prompt = `Replace the face in the first image with the face from the second image. Ensure realistic blending, correct lighting, natural skin tones, perspective alignment, and seamless integration. Keep the original thumbnail composition and background intact. Generate a single final image in exact 16:9 landscape format (e.g. 1920x1080) with no borders, no text overlays, and no collage layout. Style: ${styleInstructions || 'YouTube thumbnail style with natural realism'}.`;
 
   const payload = {
     contents: [

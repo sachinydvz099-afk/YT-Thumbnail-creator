@@ -7,6 +7,8 @@ const instructionsInput = document.getElementById('instructions');
 const statusEl = document.getElementById('status');
 const loadingEl = document.getElementById('loading');
 const outputImage = document.getElementById('outputImage');
+const thumbnailMirror = document.getElementById('thumbnailMirror');
+const portraitMirror = document.getElementById('portraitMirror');
 const downloadBtn = document.getElementById('downloadBtn');
 const generateBtn = document.getElementById('generateBtn');
 
@@ -25,13 +27,17 @@ function validateFile(file) {
   return null;
 }
 
-function renderPreview(file, imgEl) {
+function renderPreview(file, imgEl, mirrorEl) {
   const url = URL.createObjectURL(file);
   imgEl.src = url;
   imgEl.classList.remove('hidden');
+  if (mirrorEl) {
+    mirrorEl.src = url;
+    mirrorEl.classList.remove('hidden');
+  }
 }
 
-function attachPreview(inputEl, imgEl) {
+function attachPreview(inputEl, imgEl, mirrorEl) {
   inputEl.addEventListener('change', () => {
     const [file] = inputEl.files;
     const error = validateFile(file);
@@ -42,12 +48,12 @@ function attachPreview(inputEl, imgEl) {
       return;
     }
     setStatus('');
-    renderPreview(file, imgEl);
+    renderPreview(file, imgEl, mirrorEl);
   });
 }
 
-attachPreview(thumbnailInput, thumbnailPreview);
-attachPreview(portraitInput, portraitPreview);
+attachPreview(thumbnailInput, thumbnailPreview, thumbnailMirror);
+attachPreview(portraitInput, portraitPreview, portraitMirror);
 
 for (const box of document.querySelectorAll('.upload-box')) {
   const input = document.getElementById(box.dataset.input);

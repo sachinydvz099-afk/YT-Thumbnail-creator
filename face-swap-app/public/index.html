@@ -65,9 +65,25 @@
         <p id="status" class="status" role="status" aria-live="polite"></p>
       </form>
 
+      <section class="selection-preview">
+        <h3>Selected Images Preview</h3>
+        <div class="selected-grid">
+          <figure>
+            <figcaption>Thumbnail (Target)</figcaption>
+            <img id="thumbnailMirror" class="result hidden" alt="Selected thumbnail image" />
+          </figure>
+          <figure>
+            <figcaption>Portrait (Source)</figcaption>
+            <img id="portraitMirror" class="result hidden" alt="Selected portrait image" />
+          </figure>
+        </div>
+      </section>
+
       <section class="output-panel">
-        <h3>Output Preview</h3>
-        <img id="outputImage" class="result hidden" alt="Generated swapped image" />
+        <h3>Output Preview (16:9)</h3>
+        <div class="ratio-16-9">
+          <img id="outputImage" class="result hidden" alt="Generated swapped image" />
+        </div>
       </section>
     </section>
   </main>
